@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-listagem',
@@ -7,18 +6,13 @@ import { ActivatedRoute } from '@angular/router';
   standalone: false,
   styleUrls: ['./listagem.component.css']
 })
-export class ListagemComponent {
-  itens: any[] = [
-    { nome: 'Item 1', categoria: 'Categoria A' },
-    { nome: 'Item 2', categoria: 'Categoria B' }
-  ];
+export class ListagemComponent implements OnInit {
+  itens: any[] = [];
 
-  constructor(private route: ActivatedRoute) {
-    // Verifica se há novos dados passados pela rota e adiciona à lista
-    this.route.queryParams.subscribe(params => {
-      if (params['nome'] && params['categoria']) {
-        this.itens.push({ nome: params['nome'], categoria: params['categoria'] });
-      }
-    });
+  ngOnInit(): void {
+    const storedItems = localStorage.getItem('itens');
+    if (storedItems) {
+      this.itens = JSON.parse(storedItems);
+    }
   }
 }

@@ -15,10 +15,19 @@ export class CadastroComponent {
 
   salvar() {
     if (this.nome && this.categoria) {
-      // Redireciona para listagem e passa os dados pela rota
-      this.router.navigate(['/listagem'], {
-        queryParams: { nome: this.nome, categoria: this.categoria }
-      });
+      const newItem = {
+        nome: this.nome,
+        categoria: this.categoria
+      };
+
+      const storedItems = localStorage.getItem('itens');
+      let itens = storedItems ? JSON.parse(storedItems) : [];
+
+      itens.push(newItem);
+
+      localStorage.setItem('itens', JSON.stringify(itens));
+
+      this.router.navigate(['/listagem']);
     }
   }
 
