@@ -1,29 +1,32 @@
-<mat-toolbar color="primary">
-    <span>Listagem de Itens</span>
-    <span class="spacer"></span>
-    <button mat-button [routerLink]="['/home']">Home</button>
-</mat-toolbar>
-
-<div class="container">
-    <table mat-table [dataSource]="itens" class="mat-elevation-z8">
-
-        <ng-container matColumnDef="nome">
-            <th mat-header-cell *matHeaderCellDef> Nome </th>
-            <td mat-cell *matCellDef="let item"> {{ item.nome }} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="categoria">
-            <th mat-header-cell *matHeaderCellDef> Categoria </th>
-            <td mat-cell *matCellDef="let item"> {{ item.categoria }} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="['nome', 'categoria']"></tr>
-        <tr mat-row *matRowDef="let row; columns: ['nome', 'categoria'];"></tr>
+<div class="list-container">
+    <h2>Lista de Clientes</h2>
+    
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let cliente"> {{cliente.nome}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="categoria">
+        <th mat-header-cell *matHeaderCellDef> Categoria </th>
+        <td mat-cell *matCellDef="let cliente"> {{cliente.categoria}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="idade">
+        <th mat-header-cell *matHeaderCellDef> Idade </th>
+        <td mat-cell *matCellDef="let cliente"> {{cliente.idade}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="tipo">
+        <th mat-header-cell *matHeaderCellDef> Tipo </th>
+        <td mat-cell *matCellDef="let cliente"> {{cliente.tipo}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-
-    <div class="fab">
-        <button mat-fab color="primary" routerLink="/cadastro">
-            <mat-icon>add</mat-icon>
-        </button>
-    </div>
-</div>
+  
+    <button mat-fab color="primary" class="add-button" routerLink="/cadastro">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>

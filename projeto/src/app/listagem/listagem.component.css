@@ -1,17 +1,13 @@
-.container {
+.list-container {
     padding: 20px;
-}
-
-table {
+  }
+  
+  table {
     width: 100%;
-}
-
-.fab {
+  }
+  
+  .add-button {
     position: fixed;
-    bottom: 20px;
     right: 20px;
-}
-
-.spacer {
-    flex: 1 1 auto;
-}
+    bottom: 20px;
+  }

@@ -4,15 +4,18 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-listagem',
   templateUrl: './listagem.component.html',
   standalone: false,
-  styleUrls: ['./listagem.component.css']
+  styleUrls: ['./listagem.component.css'] // REMOVA standalone: true se existir
 })
 export class ListagemComponent implements OnInit {
-  itens: any[] = [];
+  displayedColumns: string[] = ['nome', 'categoria'];
+  dataSource: any[] = [];
 
   ngOnInit(): void {
-    const storedItems = localStorage.getItem('itens');
-    if (storedItems) {
-      this.itens = JSON.parse(storedItems);
-    }
+    this.carregarClientes();
+  }
+
+  carregarClientes(): void {
+    const clientesStr = localStorage.getItem('clientes');
+    this.dataSource = clientesStr ? JSON.parse(clientesStr) : [];
   }
 }
