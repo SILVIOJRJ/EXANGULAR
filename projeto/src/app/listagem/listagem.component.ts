@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listagem.component.css'] // REMOVA standalone: true se existir
 })
 export class ListagemComponent implements OnInit {
-  displayedColumns: string[] = ['nome', 'categoria'];
+  displayedColumns: string[] = ['nome', 'categoria', 'idade', 'tipo'];
   dataSource: any[] = [];
 
   ngOnInit(): void {

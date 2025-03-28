@@ -7,7 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
   standalone: false,
-  styleUrls: ['./cadastro.component.css'] // REMOVA standalone: true se existir
+  styleUrls: ['./cadastro.component.css']
 })
 export class CadastroComponent {
   form: FormGroup;
